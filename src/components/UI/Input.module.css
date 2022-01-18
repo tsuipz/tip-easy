@@ -1,0 +1,20 @@
+.input {
+	font-size: 1.1em;
+	padding: 15px 5px 0;
+}
+
+.input input {
+	margin: 5px 0 0;
+	padding: 5px;
+	width: 200px;
+	height: 20px;
+	font-size: 0.8em;
+	border: 1px solid var(--secondary-color);
+	background-color: var(--bg-color);
+	border-radius: 5px;
+}
+
+.input input:valid {
+	background-color: var(--secondary-color);
+	transition: all 0.3s ease-out;
+}
