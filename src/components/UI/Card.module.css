@@ -1,15 +1,11 @@
 .card {
 	background-color: var(--bg-color);
-	text-align: center;
-	margin: 20px 0 0;
-	padding: 20px 0;
-	width: 90%;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	margin: 1rem auto;
+	padding: 1rem;
+	width: 90%;
 	border-radius: 25px;
-	position: relative;
-	overflow: hidden;
-	display: inline-block;
-	flex-basis: wrap;
 }
 
 @media (min-width: 786px) {

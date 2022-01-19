@@ -1,11 +1,11 @@
 .section h1 {
-	margin: 0 0 10px;
-	font-size: 2em;
+	margin: 0 0 1rem;
+	font-size: 2rem;
 }
 
 .section hr {
 	width: 90%;
-	margin: 10px auto;
+	margin: 1rem auto;
 }
 
 .section p {
