@@ -1,11 +1,22 @@
 import classes from './Input.module.css';
 
-const Input = () => {
+const Input = (props) => {
+	// TODO: Set this to into a separate component
+
 	return (
-		<div className={classes.input}>
-			<label>Total Price:</label>
-			<input type='text' placeholder='Enter Total Price' required />
-		</div>
+		<>
+			<div className={classes.input}>
+				<label>Total Price:</label>
+				<input
+					type='number'
+					placeholder='Enter Total Price'
+					name={props.name}
+					value={props.value}
+					onChange={props.onPrice}
+					required
+				/>
+			</div>
+		</>
 	);
 };
 

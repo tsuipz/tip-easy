@@ -3,19 +3,7 @@
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 	text-align: center;
 	margin: 1rem auto;
-	padding: 1rem;
-	width: 90%;
+	padding: 1.3rem 1.2rem;
+	width: 100%;
 	border-radius: 25px;
-}
-
-@media (min-width: 786px) {
-	.card {
-		width: 80%;
-	}
-}
-
-@media (min-width: 992px) {
-	.card {
-		width: 800px;
-	}
 }

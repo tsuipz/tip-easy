@@ -5,7 +5,6 @@ const AboutCard = () => {
 	return (
 		<Card className={classes.section}>
 			<h1>Tip Easy</h1>
-			<hr />
 			<p>Calculate based on spliting the check or&nbsp;per&nbsp;person</p>
 		</Card>
 	);
