@@ -6,12 +6,12 @@ const Input = (props) => {
 	return (
 		<>
 			<div className={classes.input}>
-				<label>Total Price:</label>
+				<label>{props.title}</label>
 				<input
-					type='number'
-					placeholder='Enter Total Price'
+					type={props.type}
 					name={props.name}
 					value={props.value}
+					placeholder={props.placeholder || ''}
 					onChange={props.onPrice}
 					required
 				/>

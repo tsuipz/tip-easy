@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Input from '../UI/Input';
 import Card from '../UI/Card';
 import classes from './SplitCard.module.css';
+import { PriceContext } from '../../context/price-context';
+
+const DEFAULT_PERSON = {
+	name: '',
+	price: 0,
+};
 
 const SplitCard = () => {
 	const [option, setOption] = useState('split');
-	const [inputList, setInputList] = useState([{ name: '', price: 0 }]);
+	const [inputList, setInputList] = useState([DEFAULT_PERSON]);
+	const priceCtx = useContext(PriceContext);
 
 	const optionChangeHandler = (event) => {
 		setOption(event.target.value);
@@ -26,15 +33,14 @@ const SplitCard = () => {
 	};
 
 	const addInputHandler = () => {
-		setInputList([...inputList, { name: '', price: 0 }]);
+		setInputList([...inputList, DEFAULT_PERSON]);
 	};
 
 	const totalHandler = () => {
-		console.log(inputList);
+		priceCtx.addPrice(JSON.stringify(inputList));
 	};
 
 	// TODO: CLEAN THIS UP
-
 	return (
 		<Card className={classes.section}>
 			<label htmlFor='splitOptions'>
@@ -47,32 +53,38 @@ const SplitCard = () => {
 				</div>
 			</label>
 			{/* {option === 'split' ? <Input price={priceInputRef} /> : null} */}
-			{inputList.map((person, index) => (
-				<div key={index}>
-					<Input
-						name='name'
-						value={person.name}
-						onPrice={(event) => changeInputHandler(event, index)}
-					/>
-					<Input
-						name='price'
-						value={person.price}
-						onPrice={(event) => changeInputHandler(event, index)}
-					/>
-					{inputList.length !== 1 && (
-						<button className='button' onClick={() => removeInputHandler(index)}>
-							-
-						</button>
-					)}
-				</div>
-			))}
+			{option === 'per'
+				? inputList.map((person, index) => (
+						<div key={index} className={classes.perSection}>
+							<Input
+								title={`Person ${index + 1}`}
+								type='text'
+								name='name'
+								value={person.name}
+								placeholder="Enter Person's Name"
+								onPrice={(event) => changeInputHandler(event, index)}
+							/>
+							<Input
+								title='Price'
+								type='number'
+								name='price'
+								value={person.price}
+								onPrice={(event) => changeInputHandler(event, index)}
+							/>
+							{inputList.length !== 1 && (
+								<button className='button' onClick={() => removeInputHandler(index)}>
+									-
+								</button>
+							)}
+						</div>
+				  ))
+				: null}
 			<button className='button' onClick={addInputHandler}>
 				Add Input
 			</button>
 			<button className='button' onClick={totalHandler}>
 				Submit
 			</button>
-			<div>{JSON.stringify(inputList)}</div>
 		</Card>
 	);
 };
