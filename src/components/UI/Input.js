@@ -1,8 +1,7 @@
 import classes from './Input.module.css';
 
 const Input = (props) => {
-	// TODO: Set this to into a separate component
-
+	// TODO: Edit to ensure it accepts mutiple inputs for Split, Per Person, Tax, and Tip
 	return (
 		<>
 			<div className={classes.input}>

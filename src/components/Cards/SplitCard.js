@@ -53,6 +53,7 @@ const SplitCard = () => {
 				</div>
 			</label>
 			{/* {option === 'split' ? <Input price={priceInputRef} /> : null} */}
+			{/* TODO: Put this section in a separate Option Component */}
 			{option === 'per'
 				? inputList.map((person, index) => (
 						<div key={index} className={classes.perSection}>

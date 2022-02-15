@@ -21,5 +21,8 @@ This app is to calculate the tip easy between splitting with the group or indivi
 
 ## Roadmap
 
-- Additional browser support
-- Add more integrations
+- Get Total Card to produce Name and Price for per person
+- Transfer Per Person Option to another Card
+- Work on Split Option on another card
+- Add in Tip Card
+- Add in Tax Card

@@ -5,6 +5,7 @@ import Card from '../UI/Card';
 const TotalCard = () => {
 	const priceCtx = useContext(PriceContext);
 
+	// TODO: Continue working on this section to ensure name is show and price with all total
 	return (
 		<Card>
 			{JSON.parse(priceCtx.prices).map((person, index) => {
