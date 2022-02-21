@@ -1,44 +1,21 @@
 import React, { useContext, useState } from 'react';
+import { PriceContext } from '../../context/price-context';
+import PerPersonOption from '../Options/PerPersonOption';
 
+import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Card from '../UI/Card';
 import classes from './SplitCard.module.css';
-import { PriceContext } from '../../context/price-context';
-
-const DEFAULT_PERSON = {
-	name: '',
-	price: 0,
-};
+import { OptionsContext } from '../../context/options-context';
 
 const SplitCard = () => {
-	const [option, setOption] = useState('split');
-	const [inputList, setInputList] = useState([DEFAULT_PERSON]);
+	const [inputList, setInputList] = useState([{ name: '', price: 0 }]);
 	const priceCtx = useContext(PriceContext);
+	const optionsCtx = useContext(OptionsContext);
 
-	const optionChangeHandler = (event) => {
-		setOption(event.target.value);
-	};
+	const optionChangeHandler = (event) => optionsCtx.changeOption(event.target.value);
 
-	const changeInputHandler = (event, index) => {
-		const { name, value } = event.target;
-		const list = [...inputList];
-		list[index][name] = value;
-		setInputList(list);
-	};
-
-	const removeInputHandler = (index) => {
-		const list = [...inputList];
-		list.splice(index, 1);
-		setInputList(list);
-	};
-
-	const addInputHandler = () => {
-		setInputList([...inputList, DEFAULT_PERSON]);
-	};
-
-	const totalHandler = () => {
-		priceCtx.addPrice(JSON.stringify(inputList));
-	};
+	const totalHandler = () => priceCtx.addPrice(JSON.stringify(optionsCtx.inputList));
 
 	// TODO: CLEAN THIS UP
 	return (
@@ -53,36 +30,9 @@ const SplitCard = () => {
 				</div>
 			</label>
 			{/* {option === 'split' ? <Input price={priceInputRef} /> : null} */}
-			{/* TODO: Put this section in a separate Option Component */}
-			{option === 'per'
-				? inputList.map((person, index) => (
-						<div key={index} className={classes.perSection}>
-							<Input
-								title={`Person ${index + 1}`}
-								type='text'
-								name='name'
-								value={person.name}
-								placeholder="Enter Person's Name"
-								onPrice={(event) => changeInputHandler(event, index)}
-							/>
-							<Input
-								title='Price'
-								type='number'
-								name='price'
-								value={person.price}
-								onPrice={(event) => changeInputHandler(event, index)}
-							/>
-							{inputList.length !== 1 && (
-								<button className='button' onClick={() => removeInputHandler(index)}>
-									-
-								</button>
-							)}
-						</div>
-				  ))
-				: null}
-			<button className='button' onClick={addInputHandler}>
-				Add Input
-			</button>
+			{optionsCtx.option === 'per' ? (
+				<PerPersonOption inputList={inputList} setInputList={setInputList} />
+			) : null}
 			<button className='button' onClick={totalHandler}>
 				Submit
 			</button>

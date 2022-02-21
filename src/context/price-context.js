@@ -4,7 +4,6 @@ export const PriceContext = createContext({
 	prices: '',
 	tax: 0,
 	tip: 0,
-
 	addPrice: (userPrice) => {},
 	inputTax: (userTax) => {},
 });
@@ -13,7 +12,9 @@ const PriceContextProvider = (props) => {
 	const [price, setPrice] = useState('');
 	const [tax, setTax] = useState(0);
 
-	const addPriceHandler = (userPrice) => setPrice(userPrice);
+	const addPriceHandler = (userPrice) => {
+		return setPrice(userPrice);
+	};
 
 	const taxInputHandler = (userTax) => {
 		return setTax(userTax);
