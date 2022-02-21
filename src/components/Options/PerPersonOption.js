@@ -5,7 +5,7 @@ import Button from '../UI/Button';
 import classes from './PerPersonOption.module.css';
 import { OptionsContext } from '../../context/options-context';
 
-const PerPersonOption = (props) => {
+const PerPersonOption = () => {
 	const optionsCtx = useContext(OptionsContext);
 
 	const changeInputHandler = (event, index) => optionsCtx.changeInput(event.target, index);
@@ -27,20 +27,22 @@ const PerPersonOption = (props) => {
 						onPrice={(event) => changeInputHandler(event, index)}
 					/>
 					<Input
-						title='Price'
+						title='Price:'
 						type='number'
 						name='price'
 						value={person.price}
 						onPrice={(event) => changeInputHandler(event, index)}
 					/>
 					{optionsCtx.inputList.length !== 1 && (
-						<Button onClick={() => removeInputHandler(index)}>-</Button>
+						<div className={classes.deleteBtn}>
+							<Button onClick={() => removeInputHandler(index)}>-</Button>
+						</div>
 					)}
 				</div>
 			))}
-			<button className='button' onClick={addInputHandler}>
+			<Button className={classes.addBtn} onClick={addInputHandler}>
 				Add Input
-			</button>
+			</Button>
 		</>
 	);
 };

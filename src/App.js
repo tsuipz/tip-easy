@@ -1,18 +1,22 @@
 import React, { useContext } from 'react';
 import AboutCard from './components/Cards/AboutCard';
-import SplitCard from './components/Cards/SplitCard';
+import OptionsCard from './components/Cards/OptionsCard';
 import TotalCard from './components/Cards/TotalCard';
 import { PriceContext } from './context/price-context';
 
 import './App.css';
+import TaxTipCard from './components/Cards/TaxTipCard';
 
 function App() {
 	const priceCtx = useContext(PriceContext);
 	return (
 		<main className='center app'>
 			<AboutCard />
-			<SplitCard />
-			{priceCtx.prices.length !== 0 && <TotalCard />}
+			<OptionsCard />
+			<TaxTipCard />
+			{(priceCtx.perPrices.length !== 0 || Object.keys(priceCtx.splitPrices).length !== 0) && (
+				<TotalCard />
+			)}
 		</main>
 	);
 }

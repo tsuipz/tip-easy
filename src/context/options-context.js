@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react';
 export const OptionsContext = createContext({
 	option: 'split',
 	inputList: [],
+	splitCheck: {},
 	changeOption: (option) => {},
 	changeInput: (testList, list) => {},
 	removeInput: (index) => {},
@@ -12,14 +13,26 @@ export const OptionsContext = createContext({
 const OptionsContextProvider = (props) => {
 	const [option, setOption] = useState('split');
 	const [userInputList, setUserInputList] = useState([{ name: '', price: 0 }]);
+	const [splitInput, setSplitInput] = useState({ price: '', split: '' });
 
 	const changeOptionHandler = (option) => setOption(option);
 
-	const changeInputHandler = (target, index) => {
+	const changeInputHandler = (target, index = 0) => {
 		const { name, value } = target;
-		const list = [...userInputList];
-		list[index][name] = value;
-		setUserInputList(list);
+		switch (option) {
+			case 'split':
+				const split = { ...splitInput };
+				split[name] = value;
+				setSplitInput(split);
+				break;
+			case 'per':
+				const list = [...userInputList];
+				list[index][name] = value;
+				setUserInputList(list);
+				break;
+			default:
+				break;
+		}
 	};
 
 	const removeInputHandler = (index) => {
@@ -34,6 +47,7 @@ const OptionsContextProvider = (props) => {
 	const context = {
 		option: option,
 		inputList: userInputList,
+		splitCheck: splitInput,
 		changeOption: changeOptionHandler,
 		changeInput: changeInputHandler,
 		removeInput: removeInputHandler,

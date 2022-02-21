@@ -1,32 +1,48 @@
 import { createContext, useState } from 'react';
 
 export const PriceContext = createContext({
-	prices: '',
+	perPrices: [],
+	splitPrices: {},
 	tax: 0,
 	tip: 0,
+	currency: '%',
 	addPrice: (userPrice) => {},
-	inputTax: (userTax) => {},
+	addSplitPrice: (userPrice) => {},
+	inputTax: (currency, userTax) => {},
 });
 
 const PriceContextProvider = (props) => {
-	const [price, setPrice] = useState('');
+	const [price, setPrice] = useState([]);
+	const [splitPrice, setSplitPrice] = useState({});
 	const [tax, setTax] = useState(0);
+	const [tip, setTip] = useState(0);
+	const [tipCur, setTipCur] = useState('%');
 
 	const addPriceHandler = (userPrice) => {
 		return setPrice(userPrice);
 	};
 
-	const taxInputHandler = (userTax) => {
-		return setTax(userTax);
+	const addSplitPriceHandler = (userPrice) => {
+		return setSplitPrice(userPrice);
+	};
+
+	const taxInputHandler = (userTax) => setTax(userTax);
+
+	const tipInputHandler = (currency, userTip) => {
+		setTipCur(currency);
+		setTip(userTip);
 	};
 
 	const context = {
-		prices: price,
-		tax: 0,
-		tip: 0,
-
+		perPrices: price,
+		splitPrices: splitPrice,
+		tax: tax,
+		tip: tip,
+		currency: tipCur,
 		addPrice: addPriceHandler,
+		addSplitPrice: addSplitPriceHandler,
 		inputTax: taxInputHandler,
+		inputTip: tipInputHandler,
 	};
 
 	return (
