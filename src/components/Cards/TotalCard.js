@@ -19,7 +19,7 @@ const TotalCard = () => {
 				tip = Math.round(subTotal * (priceCtx.tip / 100) * 100) / 100;
 				break;
 			case '$':
-				tip = Math.round(subTotal + priceCtx.tip * 100) / 100;
+				tip = Math.round(priceCtx.tip * 100) / 100;
 				break;
 			default:
 				break;
