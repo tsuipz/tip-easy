@@ -1,6 +1,6 @@
 # Tip Easy
 
-This app is to calculate the tip easy between splitting with the group or individually.
+This app is to calculate the tip between splitting with the group or per person.
 
 ## Features
 

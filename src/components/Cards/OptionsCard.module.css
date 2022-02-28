@@ -1,17 +1,14 @@
 .select-dropdown {
-	background-color: var(--white-color);
-	border: 1px solid var(--grey-color);
 	margin: 1.2rem auto;
-	padding: 0;
-	width: 12rem;
-	border-radius: 0.4rem;
 }
 
 .select-dropdown select {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	padding: 0.5rem 1rem;
 	border: none;
 	text-align: center;
+	border: 1px solid var(--grey-color);
+	border-radius: 0.4rem;
 }
 
 .select-dropdown select:active,
