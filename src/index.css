@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans&display=swap');
+
+/*
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+Regular: 400
+Semi-Bold: 600
+Bold: 700
+
+- Line heights
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
 
 :root {
 	--primary-color: #365168;
@@ -15,13 +30,8 @@
 	box-sizing: border-box;
 }
 
-/* TODO: Work on Font Size */
 html {
-	/* font-size: 10px; */
-
-	/* 10px / 16px = 0.625 = 62.5% */
-	/* Percentage of user's browser font-size setting */
-	/* font-size: 62.5%; */
+	font-size: 62.5%;
 }
 
 body {
@@ -37,4 +47,15 @@ h4,
 h5,
 h6 {
 	font-family: 'Lexend Deca', sans-serif;
+}
+
+h2 {
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+@media (max-width: 425px) {
+	h2 {
+		font-size: 1.8rem;
+	}
 }

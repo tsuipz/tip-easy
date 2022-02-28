@@ -7,9 +7,9 @@
 
 .input input {
 	font: inherit;
-	border: 1px solid var(--grey-color);
-	border-radius: 5px;
-	padding: 0.15rem 0.25rem;
+	border: 0.1rem solid var(--grey-color);
+	border-radius: 0.4rem;
+	padding: 0.4rem;
 }
 
 .input input:focus {

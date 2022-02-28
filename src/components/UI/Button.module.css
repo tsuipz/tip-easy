@@ -3,5 +3,11 @@
 	color: var(--white-color);
 	border: 0;
 	padding: 0.5rem 1.2rem;
-	border-radius: 5px;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+	box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
 }

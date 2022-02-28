@@ -9,14 +9,19 @@ import TaxTipCard from './components/Cards/TaxTipCard';
 
 function App() {
 	const priceCtx = useContext(PriceContext);
+
+	const totalCard = () => {
+		if (priceCtx.total !== 0) {
+			return <TotalCard />;
+		}
+	};
+
 	return (
 		<main className='center app'>
 			<AboutCard />
 			<OptionsCard />
 			<TaxTipCard />
-			{(priceCtx.perPrices.length !== 0 || Object.keys(priceCtx.splitPrices).length !== 0) && (
-				<TotalCard />
-			)}
+			{totalCard()}
 		</main>
 	);
 }

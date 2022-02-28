@@ -7,23 +7,12 @@ const TotalCard = () => {
 	const priceCtx = useContext(PriceContext);
 	const optionsCtx = useContext(OptionsContext);
 
-	let total = 0;
-
-	const splitSection = () => {
-		const splitNum = priceCtx.splitPrices.split;
+	const splitTotal = () => {
+		const splitNum = priceCtx.splitPrices.split || 1;
 		const subTotal = Math.round(priceCtx.splitPrices.price * 100) / 100;
-		const tax = priceCtx.tax === 0 ? 0 : Math.round(subTotal * (priceCtx.tax / 100) * 100) / 100;
-		let tip = 0;
-		switch (priceCtx.currency) {
-			case '%':
-				tip = Math.round(subTotal * (priceCtx.tip / 100) * 100) / 100;
-				break;
-			case '$':
-				tip = Math.round(priceCtx.tip * 100) / 100;
-				break;
-			default:
-				break;
-		}
+		const tax = priceCtx.calculateTax(subTotal);
+		const tip = priceCtx.calculateTip(subTotal, tax);
+
 		const total = subTotal + tax + tip;
 		const splitTotal = total / splitNum;
 
@@ -43,7 +32,45 @@ const TotalCard = () => {
 					<span>Total:</span> <span>${total.toFixed(2)}</span>
 				</p>
 				<p>
-					<span>Split over {splitNum}:</span> <span>${splitTotal.toFixed(2)}</span>
+					<span>Split over {splitNum} People:</span> <span>${splitTotal.toFixed(2)}</span>
+				</p>
+			</div>
+		);
+	};
+
+	const perPersonTotal = () => {
+		let subTotal = priceCtx.perPrices.reduce((prevVal, curVal) => (prevVal += +curVal.price), 0);
+
+		const tax = priceCtx.calculateTax(subTotal);
+		const tip = priceCtx.calculateTip(subTotal, tax);
+
+		const total = subTotal + tax + tip;
+
+		// TODO: Add CSS Styles
+		return (
+			<div>
+				{priceCtx.perPrices.map((person, index) => {
+					const personPrice = +person.price;
+					const personTax =
+						priceCtx.currency.tax === '$'
+							? (personPrice / subTotal) * priceCtx.tax
+							: priceCtx.calculateTax(personPrice);
+					const personTip =
+						priceCtx.currency.tip === '$'
+							? (personPrice / subTotal) * priceCtx.tip
+							: priceCtx.calculateTip(personPrice);
+
+					const personTotal = personPrice + personTax + personTip;
+
+					return (
+						<p key={index}>
+							<span>{person.name || `Person ${index + 1}`}:</span>{' '}
+							<span>${(+personTotal).toFixed(2)}</span>
+						</p>
+					);
+				})}
+				<p>
+					<span>Total:</span> <span>${total.toFixed(2)}</span>
 				</p>
 			</div>
 		);
@@ -51,27 +78,8 @@ const TotalCard = () => {
 
 	return (
 		<Card>
-			{splitSection()}
-			{priceCtx.perPrices.map((person, index) => {
-				total += +person.price;
-				return (
-					<div key={index}>
-						<p>
-							{person.name}: {person.price}
-						</p>
-					</div>
-				);
-			})}
-			<br />
-			<p>
-				Total: {total.toFixed(2)}
-				<br />
-				Tax: ${priceCtx.tax}
-				<br />
-				Tip: {priceCtx.currency === '$' && '$'}
-				{priceCtx.tip}
-				{priceCtx.currency === '%' && '%'}
-			</p>
+			{optionsCtx.option === 'split' && splitTotal()}
+			{optionsCtx.option === 'per' && perPersonTotal()}
 		</Card>
 	);
 };

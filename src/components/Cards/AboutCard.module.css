@@ -1,14 +1,8 @@
-.section h1 {
-	margin: 0 0 1rem;
-	font-size: 2rem;
+.about h1 {
+	font-size: 3rem;
+	margin-bottom: 0.8rem;
 }
 
-.section p {
-	font-size: 1em;
-}
-
-@media (min-width: 992px) {
-	.section hr {
-		width: 500px;
-	}
+.about p {
+	font-size: 1.4rem;
 }

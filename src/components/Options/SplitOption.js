@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+import { OptionsContext } from '../../context/options-context';
 
 import Input from '../UI/Input';
-import { OptionsContext } from '../../context/options-context';
+import classes from './SplitOption.module.css';
 
 const SplitOption = () => {
 	const optionsCtx = useContext(OptionsContext);
@@ -9,7 +10,7 @@ const SplitOption = () => {
 	const changeInputHandler = (event) => optionsCtx.changeInput(event.target);
 
 	return (
-		<div>
+		<div className={classes.split}>
 			<Input
 				title='Price:'
 				type='number'

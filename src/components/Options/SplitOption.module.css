@@ -1,0 +1,13 @@
+.split {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: center;
+	column-gap: 2rem;
+}
+
+@media (max-width: 375px) {
+	.split {
+		grid-template-columns: 1fr;
+		row-gap: 1rem;
+	}
+}

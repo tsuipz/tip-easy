@@ -21,7 +21,6 @@ This app is to calculate the tip easy between splitting with the group or indivi
 
 ## Roadmap
 
-- Work on Split Option on another card
-- Work on Split Option CSS
+- CALCULATION SHOULD BE GOOD NOW, just clean up
 - Work on Total Card CSS
 - Work on Font Size

@@ -18,7 +18,7 @@ const OptionsContextProvider = (props) => {
 	const changeOptionHandler = (option) => setOption(option);
 
 	const changeInputHandler = (target, index = 0) => {
-		const { name, value } = target;
+		let { name, value } = target;
 		switch (option) {
 			case 'split':
 				const split = { ...splitInput };
