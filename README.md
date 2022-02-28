@@ -4,9 +4,10 @@ This app is to calculate the tip easy between splitting with the group or indivi
 
 ## Features
 
-- Split with a group
-- Input the price per person
+- Split expenses with a group of people
+- Input the price per person and calculate on how much each person should owe depending on tax and tip
 - Optional Tax and Tip add-ons
+- Tip on Pre-Tax and Post-Tax calculation
 
 ## Run Locally
 
@@ -18,9 +19,3 @@ This app is to calculate the tip easy between splitting with the group or indivi
 ## Technologies
 
 - React
-
-## Roadmap
-
-- CALCULATION SHOULD BE GOOD NOW, just clean up
-- Work on Total Card CSS
-- Work on Font Size

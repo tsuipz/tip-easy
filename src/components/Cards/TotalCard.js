@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { OptionsContext } from '../../context/options-context';
 import { PriceContext } from '../../context/price-context';
+
 import Card from '../UI/Card';
+import classes from './TotalCard.module.css';
 
 const TotalCard = () => {
 	const priceCtx = useContext(PriceContext);
@@ -16,23 +18,16 @@ const TotalCard = () => {
 		const total = subTotal + tax + tip;
 		const splitTotal = total / splitNum;
 
-		// TODO: CSS Style
 		return (
 			<div>
-				<p>
+				<p className={classes.receipt}>
 					<span>Sub Total:</span> <span>${subTotal.toFixed(2)}</span>
-				</p>
-				<p>
-					<span>Tax:</span> <span>${tax}</span>
-				</p>
-				<p>
-					<span>Tip:</span> <span>${tip}</span>
-				</p>
-				<p>
-					<span>Total:</span> <span>${total.toFixed(2)}</span>
-				</p>
-				<p>
-					<span>Split over {splitNum} People:</span> <span>${splitTotal.toFixed(2)}</span>
+					<span>Tax:</span> <span>${tax.toFixed(2)}</span>
+					<span>Tip:</span> <span>${tip.toFixed(2)}</span>
+					<span className={classes.total}>Total:</span>{' '}
+					<span className={classes.total}>${total.toFixed(2)}</span>
+					<span className={classes.total}>Split over {splitNum} People:</span>{' '}
+					<span className={classes.total}>${splitTotal.toFixed(2)}</span>
 				</p>
 			</div>
 		);
@@ -43,10 +38,8 @@ const TotalCard = () => {
 
 		const tax = priceCtx.calculateTax(subTotal);
 		const tip = priceCtx.calculateTip(subTotal, tax);
-
 		const total = subTotal + tax + tip;
 
-		// TODO: Add CSS Styles
 		return (
 			<div>
 				{priceCtx.perPrices.map((person, index) => {
@@ -58,18 +51,18 @@ const TotalCard = () => {
 					const personTip =
 						priceCtx.currency.tip === '$'
 							? (personPrice / subTotal) * priceCtx.tip
-							: priceCtx.calculateTip(personPrice);
+							: priceCtx.calculateTip(personPrice, personTax);
 
+					const personName = person.name || `Person ${index + 1}`;
 					const personTotal = personPrice + personTax + personTip;
 
 					return (
-						<p key={index}>
-							<span>{person.name || `Person ${index + 1}`}:</span>{' '}
-							<span>${(+personTotal).toFixed(2)}</span>
+						<p className={classes['per-person']} key={index}>
+							<span>{personName}:</span> <span>${(+personTotal).toFixed(2)}</span>
 						</p>
 					);
 				})}
-				<p>
+				<p className={`${classes['per-person']} ${classes.total}`}>
 					<span>Total:</span> <span>${total.toFixed(2)}</span>
 				</p>
 			</div>
@@ -77,7 +70,7 @@ const TotalCard = () => {
 	};
 
 	return (
-		<Card>
+		<Card className={classes.section}>
 			{optionsCtx.option === 'split' && splitTotal()}
 			{optionsCtx.option === 'per' && perPersonTotal()}
 		</Card>

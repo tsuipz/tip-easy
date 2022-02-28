@@ -12,7 +12,7 @@ export const OptionsContext = createContext({
 
 const OptionsContextProvider = (props) => {
 	const [option, setOption] = useState('split');
-	const [userInputList, setUserInputList] = useState([{ name: '', price: 0 }]);
+	const [userInputList, setUserInputList] = useState([{ name: '', price: '' }]);
 	const [splitInput, setSplitInput] = useState({ price: '', split: '' });
 
 	const changeOptionHandler = (option) => setOption(option);
@@ -42,7 +42,7 @@ const OptionsContextProvider = (props) => {
 	};
 
 	const addInputHandler = () =>
-		setUserInputList((prevValue) => [...prevValue, { name: '', price: 0 }]);
+		setUserInputList((prevValue) => [...prevValue, { name: '', price: '' }]);
 
 	const context = {
 		option: option,

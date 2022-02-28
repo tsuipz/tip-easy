@@ -82,8 +82,6 @@ const TaxTipCard = () => {
 						<option value='%'>%</option>
 						<option value='$'>$</option>
 					</select>
-				</div>
-				<div className={classes.input}>
 					<label htmlFor='tip'>Tip:</label>
 					<input
 						id='tip'

@@ -3,6 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	font-size: 1.6rem;
 }
 
 .input input {
@@ -15,4 +16,23 @@
 .input input:focus {
 	outline: none;
 	border-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+	.input {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.input {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.input input {
+		width: 9rem;
+		padding: 0.2rem;
+	}
 }

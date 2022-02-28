@@ -77,7 +77,7 @@ const PriceContextProvider = (props) => {
 		return totalTax;
 	};
 
-	const calculateTipHandler = (subTotal, tax) => {
+	const calculateTipHandler = (subTotal, tax = 0) => {
 		let userSubTotal = subTotal;
 		let totalTip = 0;
 		if (optionalState.taxChoice === 'post-tax') userSubTotal += tax;

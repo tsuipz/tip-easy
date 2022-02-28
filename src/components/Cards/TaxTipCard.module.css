@@ -1,10 +1,16 @@
+.section h2 {
+	margin-bottom: 1.4rem;
+}
+
 .input {
 	display: grid;
-	grid-template-columns: 3rem 15rem 4rem;
+	grid-template-columns: 3rem 20rem 5rem;
 	justify-content: center;
 	align-items: center;
 	column-gap: 1rem;
-	margin-bottom: 0.5rem;
+	row-gap: 1rem;
+	margin-bottom: 1.6rem;
+	font-size: 1.6rem;
 }
 
 .input input {
@@ -20,8 +26,9 @@
 }
 
 .input select {
-	font-size: 1rem;
+	font-size: inherit;
 	padding: 0.3rem;
+	text-align: center;
 	border: 1px solid var(--grey-color);
 	border-radius: 4px;
 	background-color: transparent;
@@ -35,20 +42,32 @@
 
 .tax-choices {
 	display: grid;
-	grid-template-columns: 1rem 9rem;
+	grid-template-columns: 1rem auto 1rem auto;
 	justify-content: center;
 	align-items: center;
 	column-gap: 1rem;
 	row-gap: 0.3rem;
+	font-size: 1.4rem;
+	margin-bottom: 1.4rem;
 }
 
 .tax-choices label {
 	text-align: left;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 	.input {
-		grid-template-columns: 3rem 8rem 4rem;
+		grid-template-columns: 3rem 15rem 5rem;
+		font-size: 1.2rem;
+		row-gap: 0.8rem;
+	}
+	.tax-choices {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 375px) {
+	.input {
 		column-gap: 0.5rem;
 	}
 }

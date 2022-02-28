@@ -31,18 +31,17 @@ const PerPersonOption = () => {
 						type='number'
 						name='price'
 						value={person.price}
+						placeholder='Enter Price'
 						onPrice={(event) => changeInputHandler(event, index)}
 					/>
 					{optionsCtx.inputList.length !== 1 && (
-						<div className={classes.deleteBtn}>
-							<Button onClick={() => removeInputHandler(index)}>-</Button>
-						</div>
+						<Button className={classes['btn-delete']} onClick={() => removeInputHandler(index)}>
+							-
+						</Button>
 					)}
 				</div>
 			))}
-			<Button className={classes.addBtn} onClick={addInputHandler}>
-				Add Input
-			</Button>
+			<Button onClick={addInputHandler}>Add Another Person</Button>
 		</>
 	);
 };
