@@ -24,9 +24,9 @@ const TotalCard = () => {
 					<span>Sub Total:</span> <span>${subTotal.toFixed(2)}</span>
 					<span>Tax:</span> <span>${tax.toFixed(2)}</span>
 					<span>Tip:</span> <span>${tip.toFixed(2)}</span>
-					<span className={classes.total}>Total:</span>{' '}
+					<span className={classes.total}>Total:</span>
 					<span className={classes.total}>${total.toFixed(2)}</span>
-					<span className={classes.total}>Split over {splitNum} People:</span>{' '}
+					<span className={classes.total}>Split over {splitNum} People:</span>
 					<span className={classes.total}>${splitTotal.toFixed(2)}</span>
 				</p>
 			</div>
