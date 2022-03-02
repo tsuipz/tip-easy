@@ -9,6 +9,8 @@
 	text-align: center;
 	border: 1px solid var(--grey-color);
 	border-radius: 0.4rem;
+	background-color: transparent;
+	color: var(--text-color);
 }
 
 .select-dropdown select:active,

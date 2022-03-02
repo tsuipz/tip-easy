@@ -32,6 +32,7 @@
 	border: 1px solid var(--grey-color);
 	border-radius: 4px;
 	background-color: transparent;
+	color: var(--text-color);
 }
 
 .input select:active,
