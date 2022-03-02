@@ -3,12 +3,11 @@
 }
 
 .select-dropdown select {
-	font-size: 1.4rem;
-	padding: 0.5rem 1rem;
-	border: none;
+	font: inherit;
+	padding: 0.3rem;
 	text-align: center;
 	border: 1px solid var(--grey-color);
-	border-radius: 0.4rem;
+	border-radius: 4px;
 	background-color: transparent;
 	color: var(--text-color);
 }

@@ -30,6 +30,12 @@
 	}
 }
 
+@media (max-width: 425px) {
+	.input input {
+		width: 11rem;
+	}
+}
+
 @media (max-width: 375px) {
 	.input input {
 		width: 9rem;
