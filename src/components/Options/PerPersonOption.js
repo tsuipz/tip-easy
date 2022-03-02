@@ -41,7 +41,7 @@ const PerPersonOption = () => {
 					)}
 				</div>
 			))}
-			<Button onClick={addInputHandler}>Add Another plz Person</Button>
+			<Button onClick={addInputHandler}>Add Another Person</Button>
 		</>
 	);
 };
