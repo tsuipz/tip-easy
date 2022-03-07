@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tip-easy/static/css/main.8ff54d11.css",
+    "main.css": "/tip-easy/static/css/main.af7bf4ee.css",
     "main.js": "/tip-easy/static/js/main.b28cade8.js",
     "index.html": "/tip-easy/index.html",
-    "main.8ff54d11.css.map": "/tip-easy/static/css/main.8ff54d11.css.map",
+    "main.af7bf4ee.css.map": "/tip-easy/static/css/main.af7bf4ee.css.map",
     "main.b28cade8.js.map": "/tip-easy/static/js/main.b28cade8.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ff54d11.css",
+    "static/css/main.af7bf4ee.css",
     "static/js/main.b28cade8.js"
   ]
 }
